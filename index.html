@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Caixa Eletrônico</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h1 class="mt-4 mb-4">Caixa Eletrônico</h1>
+
+  <!-- Menu Principal -->
+  <div id="menuPrincipal">
+    <button class="btn btn-primary" onclick="acessarConta()">1. Acessar Conta</button>
+    <button class="btn btn-success" onclick="criarConta()">2. Criar Conta</button>
+    <button class="btn btn-danger" onclick="removerConta()">3. Remover Conta</button>
+    <button class="btn btn-secondary" onclick="sair()">4. Sair</button>
+  </div>
+
+  <!-- Menu Acessar Conta -->
+  <div id="menuAcessarConta" style="display: none;">
+    <!-- Adicione os elementos HTML para o Menu Acessar Conta aqui -->
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
