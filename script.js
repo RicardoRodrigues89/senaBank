@@ -92,8 +92,8 @@ function removerConta() {
 
 // Função para sair (voltar ao Menu Principal)
 function sair() {
-    contaAtual = null;
-    exibirMenuPrincipal();
+   
+    window.location.href = 'https://www.google.com';
 }
 
 // Chame a função para exibir o Menu Principal no início
