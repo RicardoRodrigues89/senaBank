@@ -14,15 +14,51 @@
 
   <!-- Menu Principal -->
   <div id="menuPrincipal">
-    <button class="btn btn-primary" onclick="acessarConta()">1. Acessar Conta</button>
-    <button class="btn btn-success" onclick="criarConta()">2. Criar Conta</button>
-    <button class="btn btn-danger" onclick="removerConta()">3. Remover Conta</button>
-    <button class="btn btn-secondary" onclick="sair()">4. Sair</button>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary" onclick="showAcessarContaForm()">1. Acessar Conta</button>
+      <button type="button" class="btn btn-success" onclick="showCriarContaForm()">2. Criar Conta</button>
+      <button type="button" class="btn btn-danger" onclick="showRemoverContaForm()">3. Remover Conta</button>
+      <button type="button" class="btn btn-secondary" onclick="sair()">4. Sair</button>
+    </div>
   </div>
+
+  <!-- Alertas -->
+  <div id="alertas"></div>
 
   <!-- Menu Acessar Conta -->
   <div id="menuAcessarConta" style="display: none;">
-    <!-- Adicionar os elementos HTML para o Menu Acessar Conta aqui -->
+    <div class="mb-3">
+      <input type="number" class="form-control" id="numeroConta" placeholder="Número da Conta">
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" id="senha" placeholder="Senha">
+    </div>
+    <button type="button" class="btn btn-primary" onclick="acessarConta()">Acessar</button>
+  </div>
+
+  <!-- Menu Criar Conta -->
+  <div id="menuCriarConta" style="display: none;">
+    <div class="mb-3">
+      <input type="number" class="form-control" id="novoNumeroConta" placeholder="Número da Nova Conta">
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" id="novaSenha" placeholder="Senha da Nova Conta">
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente">
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="cpfCliente" placeholder="CPF do Cliente">
+    </div>
+    <button type="button" class="btn btn-success" onclick="criarConta()">Criar</button>
+  </div>
+
+  <!-- Menu Remover Conta -->
+  <div id="menuRemoverConta" style="display: none;">
+    <div class="mb-3">
+      <input type="number" class="form-control" id="numeroContaRemover" placeholder="Número da Conta a ser Removida">
+    </div>
+    <button type="button" class="btn btn-danger" onclick="removerConta()">Remover</button>
   </div>
 </div>
 

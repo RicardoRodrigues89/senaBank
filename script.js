@@ -26,40 +26,93 @@ function salvarDados() {
 function exibirMenuPrincipal() {
     document.getElementById('menuPrincipal').style.display = 'block';
     document.getElementById('menuAcessarConta').style.display = 'none';
+    document.getElementById('menuCriarConta').style.display = 'none';
+    document.getElementById('menuRemoverConta').style.display = 'none';
 }
 
-// Função para exibir o Menu Acessar Conta
-function exibirMenuAcessarConta() {
-    document.getElementById('menuPrincipal').style.display = 'none';
+// Função para mostrar alerta
+function mostrarAlerta(mensagem) {
+    const alertasDiv = document.getElementById('alertas');
+    const alerta = document.createElement('div');
+    alerta.classList.add('alert', 'alert-danger');
+    alerta.textContent = mensagem;
+    alertasDiv.appendChild(alerta);
+}
+
+// Função para mostrar o formulário de Acessar Conta
+function showAcessarContaForm() {
+    exibirMenuPrincipal();
     document.getElementById('menuAcessarConta').style.display = 'block';
+}
+
+// Função para mostrar o formulário de Criar Conta
+function showCriarContaForm() {
+    exibirMenuPrincipal();
+    document.getElementById('menuCriarConta').style.display = 'block';
+}
+
+// Função para mostrar o formulário de Remover Conta
+function showRemoverContaForm() {
+    exibirMenuPrincipal();
+    document.getElementById('menuRemoverConta').style.display = 'block';
+}
+
+// Função para esconder todos os menus
+function hideAllMenus() {
+    document.getElementById('menuAcessarConta').style.display = 'none';
+    document.getElementById('menuCriarConta').style.display = 'none';
+    document.getElementById('menuRemoverConta').style.display = 'none';
 }
 
 // Função para acessar a conta
 function acessarConta() {
+    const numeroConta = parseInt(document.getElementById('numeroConta').value);
+    const senha = document.getElementById('senha').value;
+
+    // Verifica se os campos estão preenchidos
+    if (!numeroConta || !senha) {
+        mostrarAlerta('Por favor, preencha todos os campos.');
+        return;
+    }
+
+    // Carrega os dados das contas (simulado)
     carregarDados();
 
-    const numeroConta = parseInt(prompt('Digite o número da conta:'));
-    const senha = prompt('Digite a senha:');
-
+    // Verifica se a conta existe
     const contaEncontrada = contas.contas.find(conta => conta.numero === numeroConta && conta.senha === senha);
 
     if (contaEncontrada) {
+        // Define a conta atual
         contaAtual = contaEncontrada;
-        exibirMenuAcessarConta();
+
+        // Exibe o menu de operações da conta
+        showMenuOperacoesConta();
     } else {
-        alert('Número da conta ou senha incorretos. Tente novamente.');
+        // Exibe uma mensagem de erro se a conta não for encontrada
+        mostrarAlerta('Conta não encontrada. Verifique o número da conta e a senha.');
     }
+}
+
+// Função para exibir o menu de operações da conta
+function showMenuOperacoesConta() {
+    hideAllMenus();
+    document.getElementById('menuOperacoesConta').style.display = 'block';
 }
 
 // Função para criar uma nova conta
 function criarConta() {
-    carregarDados();
+    const novoNumero = parseInt(document.getElementById('novoNumeroConta').value);
+    const novaSenha = document.getElementById('novaSenha').value;
+    const nomeCliente = document.getElementById('nomeCliente').value;
+    const cpfCliente = document.getElementById('cpfCliente').value;
 
-    const novoNumero = parseInt(prompt('Digite o número da nova conta:'));
-    const novaSenha = prompt('Digite a senha da nova conta:');
-    const nomeCliente = prompt('Digite o nome do cliente:');
-    const cpfCliente = prompt('Digite o CPF do cliente:');
+    // Verifica se os campos estão preenchidos
+    if (!novoNumero || !novaSenha || !nomeCliente || !cpfCliente) {
+        mostrarAlerta('Por favor, preencha todos os campos.');
+        return;
+    }
 
+    // Cria um novo objeto conta
     const novaConta = {
         numero: novoNumero,
         senha: novaSenha,
@@ -70,31 +123,36 @@ function criarConta() {
         saldo: 0.0
     };
 
+    // Adiciona a nova conta à lista de contas (simulada)
+    if (!contas) {
+        contas = {
+            contas: []
+        };
+    }
     contas.contas.push(novaConta);
 
+    // Salva os dados (simulando a persistência em um arquivo JSON)
     salvarDados();
+
+    // Exibe uma mensagem de sucesso
+    mostrarAlerta('Conta criada com sucesso.');
 }
 
 // Função para remover uma conta
 function removerConta() {
-    carregarDados();
+    const numeroContaRemover = parseInt(document.getElementById('numeroContaRemover').value);
 
-    const numeroContaRemover = parseInt(prompt('Digite o número da conta a ser removida:'));
-    const indiceContaRemover = contas.contas.findIndex(conta => conta.numero === numeroContaRemover);
-
-    if (indiceContaRemover !== -1) {
-        contas.contas.splice(indiceContaRemover, 1);
-        salvarDados();
-    } else {
-        alert('Número da conta não encontrado.');
-    }
+    // Aqui você pode adicionar a lógica para remover a conta
+    // Você pode usar um objeto JavaScript para simular contas, em vez de carregar de um arquivo JSON
+    mostrarAlerta('Função "removerConta" não implementada.');
 }
 
 // Função para sair (voltar ao Menu Principal)
 function sair() {
-   
+    // Aqui você pode adicionar a lógica para sair
     window.location.href = 'https://www.google.com';
 }
 
 // Chame a função para exibir o Menu Principal no início
-exibirMenuPrincipal();
+hideAllMenus();
+document.getElementById('menuPrincipal').style.display = 'block';
