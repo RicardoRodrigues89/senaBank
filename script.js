@@ -34,7 +34,7 @@ function exibirMenuPrincipal() {
 function mostrarAlerta(mensagem) {
     const alertasDiv = document.getElementById('alertas');
     const alerta = document.createElement('div');
-    alerta.classList.add('alert', 'alert-danger');
+    alerta.classList.add('alert', 'alert-success');
     alerta.textContent = mensagem;
     alertasDiv.appendChild(alerta);
 }
