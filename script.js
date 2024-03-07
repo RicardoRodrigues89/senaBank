@@ -198,12 +198,6 @@ function removerConta() {
   }
 }
 
-// Função para voltar ao Menu Principal
-function voltarMenuPrincipal() {
-  hideAllMenus();
-  exibirMenuPrincipal();
-}
-
 // Chame a função para exibir o Menu Principal no início
 hideAllMenus();
 document.getElementById('menuPrincipal').style.display = 'block';
