@@ -35,7 +35,7 @@ function mostrarAlerta(mensagem, tipo) {
   // Define um tempo para o alerta desaparecer (por exemplo, 3 segundos)
   setTimeout(function () {
     alerta.remove();
-  }, 3000);
+  }, 1000);
 }
 
 // Funções para mostrar os formulários de Acessar Conta, Criar Conta e Remover Conta
@@ -127,12 +127,6 @@ function removerConta() {
     // Exibe uma mensagem de erro se a conta não for encontrada
     mostrarAlerta('Conta não encontrada. Verifique o número da conta.', 'danger');
   }
-}
-
-// Função para voltar ao Menu Principal
-function voltarMenuPrincipal() {
-  hideAllMenus();
-  exibirMenuPrincipal();
 }
 
 // Chame a função para exibir o Menu Principal no início
