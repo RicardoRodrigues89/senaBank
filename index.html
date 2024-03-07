@@ -35,6 +35,18 @@
     </div>
     <button type="button" class="btn btn-primary" onclick="acessarConta()">Acessar</button>
   </div>
+<!-- Menu Minha Conta -->
+<div id="menuMinhaConta" style="display: none;">
+  <button type="button" class="btn btn-info" onclick="verSaldo()">1. Ver Saldo</button>
+  <button type="button" class="btn btn-warning" onclick="sacar()">2. Sacar</button>
+  <button type="button" class="btn btn-success" onclick="depositar()">3. Depositar</button>
+  <button type="button" class="btn btn-primary" onclick="verInformacoesCliente()">4. Ver Informações do Cliente</button>
+  <button type="button" class="btn btn-secondary" onclick="alterarSenha()">5. Alterar Senha</button>
+  <button type="button" class="btn btn-danger" onclick="sair()">6. Sair</button>
+</div>
+<button type="button" class="btn btn-secondary" onclick="voltarMenuPrincipal()">Voltar</button>
+
+<div id="saldoConta" class="mb-3"></div>
 
   <!-- Menu Criar Conta -->
   <div id="menuCriarConta" style="display: none;">
