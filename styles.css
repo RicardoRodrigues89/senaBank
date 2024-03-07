@@ -1,13 +1,13 @@
 body {
     display: flex;
     height: 100vh;
-    background-image: url(./img/90f0860e3476ab3b271fd8d608253ef4.jpg);
+    background-image: url(./img/fundo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 
 }
 
-.container {
+section.container {
     padding-top: 100px;
     display: flex;
     flex-direction: column;
@@ -23,3 +23,4 @@ body {
 .btn {
     margin: 5px;
 }
+  

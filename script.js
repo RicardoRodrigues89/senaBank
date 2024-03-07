@@ -1,26 +1,6 @@
 // Variáveis globais
-let contas = null; // Objeto que armazena as contas
+let contas = []; // Array que armazena as contas
 let contaAtual = null; // Conta em que o usuário está logado
-
-// Função para carregar dados do arquivo JSON
-function carregarDados() {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'contas.json', false); // Síncrono para simplificar
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            contas = JSON.parse(xhr.responseText);
-        }
-    };
-    xhr.send();
-}
-
-// Função para salvar dados no arquivo JSON
-function salvarDados() {
-    const xhr = new XMLHttpRequest();
-    xhr.open('PUT', 'contas.json', false); // Síncrono para simplificar
-    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    xhr.send(JSON.stringify(contas));
-}
 
 // Função para exibir o Menu Principal
 function exibirMenuPrincipal() {
@@ -31,12 +11,28 @@ function exibirMenuPrincipal() {
 }
 
 // Função para mostrar alerta
-function mostrarAlerta(mensagem) {
+function mostrarAlerta(mensagem, tipo) {
     const alertasDiv = document.getElementById('alertas');
+
+    // Remove todos os alertas existentes
+    while (alertasDiv.firstChild) {
+        alertasDiv.removeChild(alertasDiv.firstChild);
+    }
+
     const alerta = document.createElement('div');
-    alerta.classList.add('alert', 'alert-success');
+    alerta.classList.add('alert');
+    if (tipo === 'success') {
+        alerta.classList.add('alert-success');
+    } else if (tipo === 'danger') {
+        alerta.classList.add('alert-danger');
+    }
     alerta.textContent = mensagem;
     alertasDiv.appendChild(alerta);
+
+    // Define um tempo para o alerta desaparecer (por exemplo, 3 segundos)
+    setTimeout(function() {
+        alerta.remove();
+    }, 3000);
 }
 
 // Função para mostrar o formulário de Acessar Conta
@@ -71,15 +67,12 @@ function acessarConta() {
 
     // Verifica se os campos estão preenchidos
     if (!numeroConta || !senha) {
-        mostrarAlerta('Por favor, preencha todos os campos.');
+        mostrarAlerta('Por favor, preencha todos os campos.', 'danger');
         return;
     }
 
-    // Carrega os dados das contas (simulado)
-    carregarDados();
-
     // Verifica se a conta existe
-    const contaEncontrada = contas.contas.find(conta => conta.numero === numeroConta && conta.senha === senha);
+    const contaEncontrada = contas.find(conta => conta.numero === numeroConta && conta.senha === senha);
 
     if (contaEncontrada) {
         // Define a conta atual
@@ -89,7 +82,7 @@ function acessarConta() {
         showMenuOperacoesConta();
     } else {
         // Exibe uma mensagem de erro se a conta não for encontrada
-        mostrarAlerta('Conta não encontrada. Verifique o número da conta e a senha.');
+        mostrarAlerta('Conta não encontrada. Verifique o número da conta e a senha.', 'danger');
     }
 }
 
@@ -108,7 +101,7 @@ function criarConta() {
 
     // Verifica se os campos estão preenchidos
     if (!novoNumero || !novaSenha || !nomeCliente || !cpfCliente) {
-        mostrarAlerta('Por favor, preencha todos os campos.');
+        mostrarAlerta('Por favor, preencha todos os campos.', 'danger');
         return;
     }
 
@@ -123,34 +116,37 @@ function criarConta() {
         saldo: 0.0
     };
 
-    // Adiciona a nova conta à lista de contas (simulada)
-    if (!contas) {
-        contas = {
-            contas: []
-        };
-    }
-    contas.contas.push(novaConta);
-
-    // Salva os dados (simulando a persistência em um arquivo JSON)
-    salvarDados();
+    // Adiciona a nova conta ao array de contas
+    contas.push(novaConta);
 
     // Exibe uma mensagem de sucesso
-    mostrarAlerta('Conta criada com sucesso.');
+    mostrarAlerta('Conta criada com sucesso.', 'success');
 }
 
 // Função para remover uma conta
 function removerConta() {
     const numeroContaRemover = parseInt(document.getElementById('numeroContaRemover').value);
 
-    // Aqui você pode adicionar a lógica para remover a conta
-    // Você pode usar um objeto JavaScript para simular contas, em vez de carregar de um arquivo JSON
-    mostrarAlerta('Função "removerConta" não implementada.');
+    // Encontra o índice da conta a ser removida
+    const index = contas.findIndex(conta => conta.numero === numeroContaRemover);
+
+    if (index !== -1) {
+        // Remove a conta do array de contas
+        contas.splice(index, 1);
+        // Exibe uma mensagem de sucesso
+        mostrarAlerta('Conta removida com sucesso.', 'success');
+    } else {
+        // Exibe uma mensagem de erro se a conta não for encontrada
+        mostrarAlerta('Conta não encontrada. Verifique o número da conta.', 'danger');
+    }
 }
 
 // Função para sair (voltar ao Menu Principal)
 function sair() {
-    // Aqui você pode adicionar a lógica para sair
-    window.location.href = 'https://www.google.com';
+    // Reinicia a conta atual
+    contaAtual = null;
+    // Exibe o Menu Principal
+    exibirMenuPrincipal();
 }
 
 // Chame a função para exibir o Menu Principal no início
