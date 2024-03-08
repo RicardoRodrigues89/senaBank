@@ -128,6 +128,13 @@ function removerConta() {
     mostrarAlerta('Conta não encontrada. Verifique o número da conta.', 'danger');
   }
 }
+function voltarMenuPrincipal() {
+  contaAtual = null;
+  hideAllMenus();
+  exibirMenuPrincipal();
+  // Redirecionar para o Google
+  window.location.href = 'https://www.google.com';
+}
 
 // Chame a função para exibir o Menu Principal no início
 hideAllMenus();

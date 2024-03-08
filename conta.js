@@ -61,4 +61,8 @@ function showMenuMinhaConta() {
       mostrarAlerta('Senha inválida.', 'danger');
     }
   }
-  
+  // Função para sair do Menu Minha Conta e voltar para o Menu Principal
+function sairDoMenuMinhaConta() {
+  hideAllMenus();
+  exibirMenuPrincipal();
+}
