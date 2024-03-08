@@ -47,10 +47,6 @@ function sacar() {
     } else {
       mostrarAlerta('Valor inválido para saque.', 'danger');
     }
-
-    // Ocultar o formulário após o uso
-    form.style.display = 'none';
-    sacarFormularioAdicionado = false; // Atualizar a variável de controle
   });
 }
 

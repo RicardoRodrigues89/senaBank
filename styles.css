@@ -1,26 +1,28 @@
+/* Configurações gerais para o corpo da página */
 body {
     display: flex;
-    height: 100vh;
+    height: 100vh; /* 100% da altura da viewport */
     background-image: url(./img/fundo.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
-
+    background-size: cover; /* Cobrir todo o espaço disponível */
 }
 
+/* Estilo para a seção principal da página */
 section.container {
-    padding-top: 100px;
+    padding-top: 100px; /* Espaçamento superior para evitar sobreposição com o cabeçalho fixo */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Estilo para o título "Caixa Eletrônico" */
 .caixa {
     font-size: 3rem;
-    text-shadow: 2px 2px gray;
+    text-shadow: 2px 2px gray; /* Sombra suave no texto */
     font-weight: bolder;
 }
 
+/* Estilo para os botões */
 .btn {
-    margin: 5px;
+    margin: 5px; /* Margem entre os botões */
 }
-  

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,76 +8,78 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<section class="container">
-  <h1 class="mt-4 mb-5 caixa">Caixa Eletrônico</h1>
+  <section class="container">
+    <h1 class="mt-4 mb-5 caixa">Caixa Eletrônico</h1>
 
-  <!-- Menu Principal -->
-  <article id="menuPrincipal">
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" onclick="showAcessarContaForm()">1. Acessar Conta</button>
-      <button type="button" class="btn btn-success" onclick="showCriarContaForm()">2. Criar Conta</button>
-      <button type="button" class="btn btn-danger" onclick="showRemoverContaForm()">3. Remover Conta</button>
-      <button type="button" class="btn btn-secondary" onclick="voltarMenuPrincipal()">4. Sair</button>
-    </div>
-  </article>
+    <!-- Menu Principal -->
+    <article id="menuPrincipal">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" onclick="showAcessarContaForm()">1. Acessar Conta</button>
+        <button type="button" class="btn btn-success" onclick="showCriarContaForm()">2. Criar Conta</button>
+        <button type="button" class="btn btn-danger" onclick="showRemoverContaForm()">3. Remover Conta</button>
+        <button type="button" class="btn btn-secondary" onclick="voltarMenuPrincipal()">4. Sair</button>
+      </div>
+    </article>
 
-  <!-- Alertas -->
-  <aside id="alertas"></aside>
+    <!-- Alertas -->
+    <aside id="alertas"></aside>
 
-  <!-- Menu Minha Conta -->
-  <div id="menuMinhaConta" style="display: none;">
-    <div class="mb-3">
-      <button type="button" class="btn btn-info" onclick="verSaldo()">1. Ver Saldo</button>
-      <button type="button" class="btn btn-warning" onclick="sacar()">2. Sacar</button>
-      <button type="button" class="btn btn-success" onclick="depositar()">3. Depositar</button>
-      <button type="button" class="btn btn-primary" onclick="verInformacoesCliente()">4. Ver Informações do Cliente</button>
-      <button type="button" class="btn btn-secondary" onclick="alterarSenha()">5. Alterar Senha</button>
-      <button type="button" class="btn btn-secondary" onclick="sairDoMenuMinhaConta()">6. Sair</button>
+    <!-- Menu Minha Conta -->
+    <div id="menuMinhaConta" style="display: none;">
+      <div class="mb-3">
+        <button type="button" class="btn btn-info" onclick="verSaldo()">1. Ver Saldo</button>
+        <button type="button" class="btn btn-warning" onclick="sacar()">2. Sacar</button>
+        <button type="button" class="btn btn-success" onclick="depositar()">3. Depositar</button>
+        <button type="button" class="btn btn-primary" onclick="verInformacoesCliente()">4. Ver Informações do Cliente</button>
+        <button type="button" class="btn btn-secondary" onclick="alterarSenha()">5. Alterar Senha</button>
+        <button type="button" class="btn btn-secondary" onclick="sairDoMenuMinhaConta()">6. Sair</button>
+      </div>
+      <div id="saldoConta" class="mb-3"></div>
     </div>
-    <div id="saldoConta" class="mb-3"></div>
-  </div>
 
-  <!-- Menu Acessar Conta -->
-  <div id="menuAcessarConta" style="display: none;">
-    <div class="mb-3">
-      <input type="number" class="form-control" id="numeroConta" placeholder="Número da Conta">
+    <!-- Menu Acessar Conta -->
+    <div id="menuAcessarConta" style="display: none;">
+      <div class="mb-3">
+        <input type="number" class="form-control" id="numeroConta" placeholder="Número da Conta">
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" id="senha" placeholder="Senha">
+      </div>
+      <button type="button" class="btn btn-primary" onclick="acessarConta()">Acessar</button>
     </div>
-    <div class="mb-3">
-      <input type="password" class="form-control" id="senha" placeholder="Senha">
-    </div>
-    <button type="button" class="btn btn-primary" onclick="acessarConta()">Acessar</button>
-  </div>
 
-  <!-- Menu Criar Conta -->
-  <div id="menuCriarConta" style="display: none;">
-    <div class="mb-3">
-      <input type="number" class="form-control" id="novoNumeroConta" placeholder="Número da Nova Conta">
+    <!-- Menu Criar Conta -->
+    <div id="menuCriarConta" style="display: none;">
+      <div class="mb-3">
+        <input type="number" class="form-control" id="novoNumeroConta" placeholder="Número da Nova Conta">
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" id="novaSenha" placeholder="Senha da Nova Conta">
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente">
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="cpfCliente" placeholder="CPF do Cliente">
+      </div>
+      <button type="button" class="btn btn-success" onclick="criarConta()">Criar</button>
     </div>
-    <div class="mb-3">
-      <input type="password" class="form-control" id="novaSenha" placeholder="Senha da Nova Conta">
-    </div>
-    <div class="mb-3">
-      <input type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente">
-    </div>
-    <div class="mb-3">
-      <input type="text" class="form-control" id="cpfCliente" placeholder="CPF do Cliente">
-    </div>
-    <button type="button" class="btn btn-success" onclick="criarConta()">Criar</button>
-  </div>
 
-  <!-- Menu Remover Conta -->
-  <div id="menuRemoverConta" style="display: none;">
-    <div class="mb-3">
-      <input type="number" class="form-control" id="numeroContaRemover" placeholder="Número da Conta a ser Removida">
+    <!-- Menu Remover Conta -->
+    <div id="menuRemoverConta" style="display: none;">
+      <div class="mb-3">
+        <input type="number" class="form-control" id="numeroContaRemover" placeholder="Número da Conta a ser Removida">
+      </div>
+      <button type="button" class="btn btn-danger" onclick="removerConta()">Remover</button>
     </div>
-    <button type="button" class="btn btn-danger" onclick="removerConta()">Remover</button>
-  </div>
-</section>
+  </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="conta.js"></script>
-<script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="conta.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
