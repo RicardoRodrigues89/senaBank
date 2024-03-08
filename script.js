@@ -32,7 +32,7 @@ function mostrarAlerta(mensagem, tipo) {
   alerta.textContent = mensagem;
   alertasDiv.appendChild(alerta);
 
-  // Define um tempo para o alerta desaparecer (por exemplo, 3 segundos)
+  // Define um tempo para o alerta desaparecer 
   setTimeout(function () {
     alerta.remove();
   }, 1000);
