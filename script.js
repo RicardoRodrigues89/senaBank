@@ -93,6 +93,12 @@ function criarConta() {
     return;
   }
 
+  // Verifica se o CPF tem o número correto de dígitos
+  if (cpfCliente.length !== 11) {
+    mostrarAlerta('O CPF deve ter 11 números.', 'danger');
+    return;
+  }
+
   // Cria um novo objeto conta
   const novaConta = {
     numero: novoNumero,
@@ -109,6 +115,12 @@ function criarConta() {
 
   // Exibe uma mensagem de sucesso
   mostrarAlerta('Conta criada com sucesso.', 'success');
+
+  // Limpa os campos após o sucesso
+  document.getElementById('novoNumeroConta').value = '';
+  document.getElementById('novaSenha').value = '';
+  document.getElementById('nomeCliente').value = '';
+  document.getElementById('cpfCliente').value = '';
 }
 
 // Função para remover uma conta
@@ -123,11 +135,15 @@ function removerConta() {
     contas.splice(index, 1);
     // Exibe uma mensagem de sucesso
     mostrarAlerta('Conta removida com sucesso.', 'success');
+
+    // Limpa os campos após o sucesso
+    document.getElementById('numeroContaRemover').value = '';
   } else {
     // Exibe uma mensagem de erro se a conta não for encontrada
     mostrarAlerta('Conta não encontrada. Verifique o número da conta.', 'danger');
   }
 }
+
 function voltarMenuPrincipal() {
   contaAtual = null;
   hideAllMenus();

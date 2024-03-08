@@ -48,11 +48,9 @@ function sacar() {
       mostrarAlerta('Valor inválido para saque.', 'danger');
     }
 
-    // Remover o formulário após um intervalo de tempo (por exemplo, 2 segundos)
-    setTimeout(() => {
-      form.remove(); // Remover o formulário
-      sacarFormularioAdicionado = false; // Atualizar a variável de controle
-    }, 2000);
+    // Ocultar o formulário após o uso
+    form.style.display = 'none';
+    sacarFormularioAdicionado = false; // Atualizar a variável de controle
   });
 }
 
@@ -77,15 +75,8 @@ function depositar() {
     } else {
       mostrarAlerta('Valor inválido para depósito.', 'danger');
     }
-
-    // Remover o formulário após um intervalo de tempo (por exemplo, 2 segundos)
-    setTimeout(() => {
-      form.remove(); // Remover o formulário
-      depositarFormularioAdicionado = false; // Atualizar a variável de controle
-    }, 2000);
   });
 }
-
 
 
 // Função para alterar a senha da conta
